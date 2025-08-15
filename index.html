@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src='//libtl.com/sdk.js' data-zone='9716370' data-sdk='show_9716370'></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auto MoneTag Ads Reward System</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background particles */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 99, 71, 0.1) 0%, transparent 50%);
+      animation: backgroundShift 20s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes backgroundShift {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(180deg); }
+    }
+
+    .container {
+      text-align: center;
+      background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 215, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      width: 350px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: containerFloat 6s ease-in-out infinite;
+      backdrop-filter: blur(10px);
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #FFD700, #4CAF50, #FF6347, #FFD700);
+      border-radius: 20px;
+      z-index: -1;
+      animation: borderGlow 3s linear infinite;
+    }
+
+    @keyframes containerFloat {
+      0%, 100% { transform: translateY(0px) rotateX(0deg); }
+      50% { transform: translateY(-10px) rotateX(2deg); }
+    }
+
+    @keyframes borderGlow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    .container h1 {
+      font-size: 24px;
+      color: #FFD700;
+      margin-bottom: 15px;
+      text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.4),
+        0 0 30px rgba(255, 215, 0, 0.2);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+      transform: translateZ(20px);
+    }
+
+    @keyframes titleGlow {
+      0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4); }
+      100% { text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8); }
+    }
+
+    .developer {
+      font-size: 12px;
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      padding: 8px 15px;
+      border-radius: 25px;
+      margin-bottom: 20px;
+      display: inline-block;
+      cursor: pointer;
+      color: white;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+      transform: translateZ(15px);
+      transition: all 0.3s ease;
+      animation: developerPulse 3s ease-in-out infinite;
+    }
+
+    .developer:hover {
+      transform: translateZ(20px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+    }
+
+    @keyframes developerPulse {
+      0%, 100% { transform: translateZ(15px) scale(1); }
+      50% { transform: translateZ(15px) scale(1.02); }
+    }
+
+    .user-info p {
+      font-size: 16px;
+      color: #fff;
+      margin: 15px 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      transform: translateZ(10px);
+    }
+
+    .stats {
+      margin: 20px 0;
+      transform: translateZ(15px);
+    }
+
+    .stats p {
+      margin: 8px 0;
+      font-size: 16px;
+      color: #FFD700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      animation: statsGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes statsGlow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    .progress-circle {
+      width: 100px;
+      height: 100px;
+      border: 4px solid transparent;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto;
+      background: conic-gradient(from 0deg, #FFD700 0deg, #333 0deg);
+      position: relative;
+      transform: translateZ(25px);
+      animation: progressRotate 10s linear infinite;
+    }
+
+    .progress-circle::before {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+      border-radius: 50%;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .progress-circle span {
+      font-size: 20px;
+      font-weight: bold;
+      color: #FFD700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+      z-index: 1;
+      position: relative;
+    }
+
+    @keyframes progressRotate {
+      0% { transform: translateZ(25px) rotate(0deg); }
+      100% { transform: translateZ(25px) rotate(360deg); }
+    }
+
+    .buttons {
+      transform: translateZ(20px);
+    }
+
+    .buttons button {
+      width: 100%;
+      margin: 8px 0;
+      padding: 15px;
+      font-size: 14px;
+      border: none;
+      border-radius: 15px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .buttons button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .buttons button:hover::before {
+      left: 100%;
+    }
+
+    #watch-ad-btn { 
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    }
+    
+    #watch-video-btn { 
+      background: linear-gradient(45deg, #FF0000, #FF4444);
+      color: white;
+      box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+    }
+    
+    #auto-ad-btn { 
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      color: white;
+      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+    }
+    
+    #stop-auto-btn { 
+      background: linear-gradient(45deg, #FF6347, #FF4500);
+      color: white;
+      box-shadow: 0 8px 25px rgba(255, 99, 71, 0.4);
+    }
+    
+    .buttons button:nth-child(5) {
+      background: linear-gradient(45deg, #FFD700, #4CAF50, #FFD700);
+      color: white;
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .buttons button:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .buttons button:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+
+    .auto-status {
+      margin: 20px 0;
+      padding: 15px;
+      background: linear-gradient(145deg, #333, #444);
+      border-radius: 15px;
+      color: #FFD700;
+      font-size: 14px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      transform: translateZ(15px);
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+      0%, 100% { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
+      50% { box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2); }
+    }
+
+    #video-container {
+      display: none;
+      margin-top: 20px;
+      transform: translateZ(10px);
+    }
+
+    #video-container iframe {
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    #video-container p {
+      color: #FFD700;
+      font-size: 14px;
+      margin-top: 10px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    .withdraw-section {
+      margin-top: 25px;
+      display: none;
+      padding: 25px;
+      background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      transform: translateZ(15px);
+    }
+
+    .withdraw-section h3 {
+      color: #FFD700;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+
+    .withdraw-section input,
+    .withdraw-section select,
+    .withdraw-section button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #333, #444);
+      color: white;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .withdraw-section input:focus,
+    .withdraw-section select:focus {
+      outline: none;
+      border-color: #FFD700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      transform: scale(1.02);
+    }
+
+    .withdraw-section button {
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .withdraw-section button:hover {
+      background: linear-gradient(45deg, #45a049, #4CAF50);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+    }
+
+    /* Responsive design */
+    @media (max-width: 480px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+      
+      .container h1 {
+        font-size: 20px;
+      }
+      
+      .buttons button {
+        padding: 12px;
+        font-size: 13px;
+      }
+    }
+
+    /* Loading animation for elements */
+    .container > * {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .container > *:nth-child(1) { animation-delay: 0.1s; }
+    .container > *:nth-child(2) { animation-delay: 0.2s; }
+    .container > *:nth-child(3) { animation-delay: 0.3s; }
+    .container > *:nth-child(4) { animation-delay: 0.4s; }
+    .container > *:nth-child(5) { animation-delay: 0.5s; }
+    .container > *:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Auto MoneTag Ads</h1>
+    <div class="developer">Developer by TBPYC</div>
+    <div class="user-info">
+      <p>Welcome, <span id="user-name"></span></p>
+    </div>
+    <div class="stats">
+      <p>Watched Ads: <span id="watched-ads">0</span></p>
+      <p>Earned Points: <span id="earned-points">0.00</span></p>
+    </div>
+    <div class="progress-circle">
+      <span id="ads-progress">0%</span>
+    </div>
+    <div class="buttons">
+      <button id="watch-ad-btn" onclick="watchAd()">Watch Ad</button>
+      <button id="watch-video-btn" onclick="watchVideo()">💰 YouTube Video Watch</button>
+      <button id="auto-ad-btn" onclick="startAutoAds()">Auto Show Ads</button>
+      <button id="stop-auto-btn" onclick="stopAutoAds()" disabled>Stop Auto Ads</button>
+      <button onclick="showWithdrawForm()">Withdrawal Request</button>
+    </div>
+    <div id="auto-status" class="auto-status" style="display: none;">
+      Auto Ads Running - Next ad in: <span id="countdown">0</span>s
+    </div>
+    <div id="video-container">
+      <iframe width="280" height="158" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <p style="color:#FFD700; font-size:12px;">Watch full video to earn 1 point</p>
+    </div>
+    <div id="withdraw-section" class="withdraw-section">
+      <h3>Withdrawal</h3>
+      <input type="number" id="withdraw-amount" placeholder="Enter points to withdraw" min="5">
+      <select id="payment-method">
+        <option value="Bkash">Bkash</option>
+        <option value="Nagad">Nagad</option>
+        <option value="Manual">Manual Withdraw</option>
+      </select>
+      <input type="text" id="withdraw-phone" placeholder="Enter phone number">
+      <button onclick="withdrawPoints()">Withdraw</button>
+      <p id="withdraw-status"></p>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const adScript = document.createElement('script');
+      adScript.async = true;
+      adScript.src = 'https://' + ['js','onclckmn','com'].join('.') + '/static/onclicka.js';
+      adScript.setAttribute('data-admpid', '310679');
+      document.head.appendChild(adScript);
+    })();
+  </script>
+
+  <script>
+    const MIN_WITHDRAW_POINTS = 200;
+    const ADMIN_USER_ID = "8393951171";
+    const BOT_TOKEN = "8393951171:AAEmwepU4YLh_5GMzoL8oPGsyGRXyK4zXIU";
+    const YOUTUBE_VIDEOS = [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/JGwWNGJdvx8"
+    ];
+    
+    let watchedAdsCount = 0;
+    let earnedPoints = 0.00;
+    let autoAdInterval;
+    let currentVideo = null;
+    let autoAdTimer;
+    let countdownInterval;
+    let isAutoAdsRunning = false;
+    let adDuration = 30000; // 30 seconds for each ad
+
+    const telegramUserName = "@exampleUser";
+    document.getElementById("user-name").textContent = telegramUserName;
+
+    if (localStorage.getItem('watchedAdsCount')) {
+      watchedAdsCount = parseInt(localStorage.getItem('watchedAdsCount'));
+      earnedPoints = parseFloat(localStorage.getItem('earnedPoints'));
+      document.getElementById('watched-ads').textContent = watchedAdsCount;
+      document.getElementById('earned-points').textContent = earnedPoints.toFixed(2);
+    }
+
+    function watchAd() {
+      if (typeof show_9716370 === 'function') {
+        show_9716370().then(() => {
+          watchedAdsCount++;
+          earnedPoints += 0.50;
+          updateStats();
+          updateProgressCircle();
+        });
+      }
+    }
+
+    function watchVideo() {
+      const videoContainer = document.getElementById('video-container');
+      const iframe = videoContainer.querySelector('iframe');
+      const randomVideo = YOUTUBE_VIDEOS[Math.floor(Math.random() * YOUTUBE_VIDEOS.length)];
+      iframe.src = randomVideo + "?autoplay=1";
+      videoContainer.style.display = 'block';
+      currentVideo = { url: randomVideo, startTime: Date.now(), watched: false };
+
+      const videoCheckInterval = setInterval(() => {
+        if (currentVideo && !currentVideo.watched) {
+          const timeWatched = (Date.now() - currentVideo.startTime) / 1000;
+          if (timeWatched >= 120) {
+            currentVideo.watched = true;
+            earnedPoints += 1.00;
+            updateStats();
+            alert('You earned 1 point for watching the full video!');
+            clearInterval(videoCheckInterval);
+          }
+        } else {
+          clearInterval(videoCheckInterval);
+        }
+      }, 1000);
+    }
+
+    function startAutoAds() {
+      if (isAutoAdsRunning) return;
+      
+      isAutoAdsRunning = true;
+      document.getElementById('auto-ad-btn').disabled = true;
+      document.getElementById('stop-auto-btn').disabled = false;
+      document.getElementById('auto-status').style.display = 'block';
+      
+      // Start the first ad immediately
+      showAutoAd();
+      
+      // Set interval for subsequent ads
+      autoAdInterval = setInterval(showAutoAd, adDuration + 5000); // 5 seconds gap between ads
+    }
+
+    function showAutoAd() {
+      if (!isAutoAdsRunning) return;
+      
+      // Show ad
+      if (typeof show_9716370 === 'function') {
+        show_9716370().then(() => {
+          // Ad started successfully
+          startCountdown();
+          
+          // Auto close ad after specified duration
+          setTimeout(() => {
+            closeAutoAd();
+          }, adDuration);
+        }).catch(() => {
+          // If ad fails, try again after 10 seconds
+          setTimeout(showAutoAd, 10000);
+        });
+      }
+    }
+
+    function closeAutoAd() {
+      // Simulate closing the ad (this will depend on the ad provider's API)
+      // For now, we'll just update stats and prepare for next ad
+      watchedAdsCount++;
+      earnedPoints += 0.50;
+      updateStats();
+      updateProgressCircle();
+      
+      // Reset countdown
+      clearInterval(countdownInterval);
+      document.getElementById('countdown').textContent = '0';
+    }
+
+    function startCountdown() {
+      let timeLeft = Math.floor(adDuration / 1000);
+      document.getElementById('countdown').textContent = timeLeft;
+      
+      countdownInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById('countdown').textContent = timeLeft;
+        
+        if (timeLeft <= 0) {
+          clearInterval(countdownInterval);
+        }
+      }, 1000);
+    }
+
+    function stopAutoAds() {
+      isAutoAdsRunning = false;
+      clearInterval(autoAdInterval);
+      clearInterval(countdownInterval);
+      document.getElementById('auto-ad-btn').disabled = false;
+      document.getElementById('stop-auto-btn').disabled = true;
+      document.getElementById('auto-status').style.display = 'none';
+      document.getElementById('countdown').textContent = '0';
+    }
+
+    function showWithdrawForm() {
+      document.getElementById('withdraw-section').style.display = 'block';
+      document.getElementById('video-container').style.display = 'none';
+    }
+
+    function withdrawPoints() {
+      const amount = document.getElementById('withdraw-amount').value;
+      const method = document.getElementById('payment-method').value;
+      const phone = document.getElementById('withdraw-phone').value;
+
+      if (amount < MIN_WITHDRAW_POINTS) {
+        document.getElementById('withdraw-status').textContent = `Minimum withdrawal amount is ${MIN_WITHDRAW_POINTS} points.`;
+        return;
+      }
+
+      if (amount > earnedPoints) {
+        document.getElementById('withdraw-status').textContent = `Insufficient balance. You have ${earnedPoints.toFixed(2)} points.`;
+        return;
+      }
+
+      earnedPoints -= parseFloat(amount);
+      updateStats();
+
+      const msg = `🟡 *Withdraw Request* 🟡\n👤 User: ${telegramUserName}\n💰 Points: ${amount}\n📱 Method: ${method}\n📞 Number: ${phone}\n🕒 Time: ${new Date().toLocaleString()}`;
+      sendTelegram(msg);
+
+      document.getElementById('withdraw-status').textContent = '✅ Withdrawal request sent successfully!';
+      document.getElementById('withdraw-amount').value = '';
+      document.getElementById('withdraw-phone').value = '';
+    }
+
+    function updateStats() {
+      document.getElementById('watched-ads').textContent = watchedAdsCount;
+      document.getElementById('earned-points').textContent = earnedPoints.toFixed(2);
+      localStorage.setItem('watchedAdsCount', watchedAdsCount);
+      localStorage.setItem('earnedPoints', earnedPoints.toFixed(2));
+    }
+
+    function updateProgressCircle() {
+      const percentage = Math.min((watchedAdsCount / 10) * 100, 100);
+      document.getElementById('ads-progress').textContent = `${Math.floor(percentage)}%`;
+    }
+
+    function sendTelegram(message) {
+      const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: ADMIN_USER_ID,
+          text: message,
+          parse_mode: "Markdown"
+        })
+      })
+      .then(res => res.json())
+      .then(data => console.log("Message sent to Telegram", data))
+      .catch(err => console.error("Telegram Error:", err));
+    }
+  </script>
+</body>
+</html>
