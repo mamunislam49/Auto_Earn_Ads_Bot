@@ -27,6 +27,15 @@
   <!-- Telegram Web App Integration -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   
+  <!-- MoneTag Ads Integration -->
+  <script src="https://get.monet-tag.com/tag.min.js"></script>
+  <script>
+    window.monetag = window.monetag || { cmd: [] };
+    monetag.cmd.push(() => {
+      monetag.setZoneId('9716370');
+    });
+  </script>
+  
   <!-- Prevent Blogger scripts -->
   <script>
     // Block Blogger/Google scripts
@@ -644,7 +653,9 @@
     const YOUTUBE_VIDEOS = [
       "https://www.youtube.com/embed/dQw4w9WgXcQ",
       "https://www.youtube.com/embed/9bZkp7q19f0",
-      "https://www.youtube.com/embed/JGwWNGJdvx8"
+      "https://www.youtube.com/embed/JGwWNGJdvx8",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/RgKAFK5djSk"
     ];
     
     let watchedAdsCount = 0;
@@ -672,27 +683,44 @@
     }
 
     function watchAd() {
-      // Simple ad simulation for mobile
+      // Show MoneTag Ad
       const adBtn = document.getElementById('watch-ad-btn');
       adBtn.disabled = true;
-      adBtn.textContent = 'Watching...';
+      adBtn.textContent = 'Loading Ad...';
       
-      setTimeout(() => {
-        watchedAdsCount++;
-        earnedPoints += 0.50;
-        updateStats();
-        updateProgressCircle();
+      // Load MoneTag Ad
+      if (typeof monetag !== 'undefined') {
+        monetag.showInterstitialAd('9716370');
         
-        adBtn.disabled = false;
-        adBtn.textContent = 'Watch Ad';
-        
-        // Show success message
-        if (tg) {
-          tg.showAlert('Ad watched successfully! +0.50 points');
-        } else {
-          alert('Ad watched successfully! +0.50 points');
-        }
-      }, 3000);
+        // Handle ad completion
+        setTimeout(() => {
+          watchedAdsCount++;
+          earnedPoints += 0.50;
+          updateStats();
+          updateProgressCircle();
+          
+          adBtn.disabled = false;
+          adBtn.textContent = 'Watch Ad';
+          
+          // Show success message
+          if (tg) {
+            tg.showAlert('Ad watched successfully! +0.50 points');
+          } else {
+            alert('Ad watched successfully! +0.50 points');
+          }
+        }, 3000);
+      } else {
+        // Fallback if monetag is not loaded
+        setTimeout(() => {
+          adBtn.disabled = false;
+          adBtn.textContent = 'Watch Ad';
+          if (tg) {
+            tg.showAlert('Ad service unavailable. Please try again later.');
+          } else {
+            alert('Ad service unavailable. Please try again later.');
+          }
+        }, 1000);
+      }
     }
 
     function watchVideo() {
@@ -741,12 +769,17 @@
     function showAutoAd() {
       if (!isAutoAdsRunning) return;
       
-      // Simulate ad for mobile
+      // Show MoneTag Ad
       const adBtn = document.getElementById('auto-ad-btn');
       adBtn.textContent = 'Ad Running...';
       adBtn.disabled = true;
       
       startCountdown();
+      
+      // Show MoneTag Ad if available
+      if (typeof monetag !== 'undefined') {
+        monetag.showInterstitialAd('9716370');
+      }
       
       // Auto close ad after specified duration
       setTimeout(() => {
@@ -789,6 +822,11 @@
       document.getElementById('stop-auto-btn').disabled = true;
       document.getElementById('auto-status').style.display = 'none';
       document.getElementById('countdown').textContent = '0';
+      
+      // Stop any running MoneTag ads if possible
+      if (typeof monetag !== 'undefined' && typeof monetag.closeAd === 'function') {
+        monetag.closeAd();
+      }
     }
 
     function showWithdrawForm() {
