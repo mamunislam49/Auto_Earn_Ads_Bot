@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <script src='//libtl.com/sdk.js' data-zone='9716370' data-sdk='show_9716370'></script>
-  
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Auto MoneTag Ads Reward System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#000000">
+  <meta name="msapplication-navbutton-color" content="#000000">
+  <meta name="apple-mobile-web-app-title" content="Auto MoneTag Ads">
+  <meta name="application-name" content="Auto MoneTag Ads">
+  <meta name="description" content="Auto MoneTag Ads Reward System">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Prevent Blogger/Google interface -->
+  <meta name="google" content="notranslate">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  
+  <!-- Force standalone mode -->
+  <meta name="apple-mobile-web-app-capable" content="standalone">
+  <meta name="mobile-web-app-capable" content="standalone">
+  
+  <title>Auto MoneTag Ads</title>
+  
+  <!-- Telegram Web App Integration -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  
+  <!-- Prevent Blogger scripts -->
+  <script>
+    // Block Blogger/Google scripts
+    if (window.location.hostname.includes('blogspot.com') || window.location.hostname.includes('blogger.com')) {
+      window.location.href = window.location.href.replace(/^https?:\/\/([^.]+)\.(blogspot\.com|blogger\.com)/, 'https://$1.github.io');
+    }
+    
+    // Prevent Blogger interface
+    if (typeof window.Blogger !== 'undefined') {
+      delete window.Blogger;
+    }
+    
+    // Override any Blogger functions
+    window.Blogger = undefined;
+    window.Blog = undefined;
+  </script>
+  
   <style>
     * {
       margin: 0;
@@ -14,18 +51,25 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: #000000;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     body {
-      margin: 0;
-      padding: 0;
       background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
       color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
 
     /* Animated background particles */
@@ -52,19 +96,21 @@
     .container {
       text-align: center;
       background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
-      padding: 30px;
+      padding: 20px;
       border-radius: 20px;
       box-shadow: 
         0 20px 40px rgba(0, 0, 0, 0.5),
         0 0 0 1px rgba(255, 215, 0, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      width: 350px;
+      width: 90%;
+      max-width: 350px;
       border: 2px solid transparent;
       background-clip: padding-box;
       position: relative;
       transform-style: preserve-3d;
       animation: containerFloat 6s ease-in-out infinite;
       backdrop-filter: blur(10px);
+      margin: 10px;
     }
 
     .container::before {
@@ -82,7 +128,7 @@
 
     @keyframes containerFloat {
       0%, 100% { transform: translateY(0px) rotateX(0deg); }
-      50% { transform: translateY(-10px) rotateX(2deg); }
+      50% { transform: translateY(-5px) rotateX(1deg); }
     }
 
     @keyframes borderGlow {
@@ -91,7 +137,7 @@
     }
 
     .container h1 {
-      font-size: 24px;
+      font-size: 22px;
       color: #FFD700;
       margin-bottom: 15px;
       text-shadow: 
@@ -108,11 +154,11 @@
     }
 
     .developer {
-      font-size: 12px;
+      font-size: 11px;
       background: linear-gradient(45deg, #4CAF50, #45a049);
-      padding: 8px 15px;
-      border-radius: 25px;
-      margin-bottom: 20px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-bottom: 15px;
       display: inline-block;
       cursor: pointer;
       color: white;
@@ -133,21 +179,21 @@
     }
 
     .user-info p {
-      font-size: 16px;
+      font-size: 14px;
       color: #fff;
-      margin: 15px 0;
+      margin: 12px 0;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
       transform: translateZ(10px);
     }
 
     .stats {
-      margin: 20px 0;
+      margin: 15px 0;
       transform: translateZ(15px);
     }
 
     .stats p {
-      margin: 8px 0;
-      font-size: 16px;
+      margin: 6px 0;
+      font-size: 14px;
       color: #FFD700;
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
       animation: statsGlow 4s ease-in-out infinite;
@@ -159,14 +205,14 @@
     }
 
     .progress-circle {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border: 4px solid transparent;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 20px auto;
+      margin: 15px auto;
       background: conic-gradient(from 0deg, #FFD700 0deg, #333 0deg);
       position: relative;
       transform: translateZ(25px);
@@ -176,15 +222,15 @@
     .progress-circle::before {
       content: '';
       position: absolute;
-      width: 80px;
-      height: 80px;
+      width: 64px;
+      height: 64px;
       background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
       border-radius: 50%;
       box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .progress-circle span {
-      font-size: 20px;
+      font-size: 16px;
       font-weight: bold;
       color: #FFD700;
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
@@ -203,11 +249,11 @@
 
     .buttons button {
       width: 100%;
-      margin: 8px 0;
-      padding: 15px;
-      font-size: 14px;
+      margin: 6px 0;
+      padding: 12px;
+      font-size: 13px;
       border: none;
-      border-radius: 15px;
+      border-radius: 12px;
       color: #000;
       font-weight: bold;
       cursor: pointer;
@@ -215,7 +261,9 @@
       position: relative;
       overflow: hidden;
       transform-style: preserve-3d;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
     .buttons button::before {
@@ -229,31 +277,32 @@
       transition: left 0.5s;
     }
 
-    .buttons button:hover::before {
+    .buttons button:hover::before,
+    .buttons button:active::before {
       left: 100%;
     }
 
     #watch-ad-btn { 
       background: linear-gradient(45deg, #FFD700, #FFA500);
-      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
     }
     
     #watch-video-btn { 
       background: linear-gradient(45deg, #FF0000, #FF4444);
       color: white;
-      box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+      box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
     }
     
     #auto-ad-btn { 
       background: linear-gradient(45deg, #4CAF50, #45a049);
       color: white;
-      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
     }
     
     #stop-auto-btn { 
       background: linear-gradient(45deg, #FF6347, #FF4500);
       color: white;
-      box-shadow: 0 8px 25px rgba(255, 99, 71, 0.4);
+      box-shadow: 0 6px 20px rgba(255, 99, 71, 0.4);
     }
     
     .buttons button:nth-child(5) {
@@ -261,7 +310,7 @@
       color: white;
       background-size: 200% 200%;
       animation: gradientShift 3s ease infinite;
-      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
     }
 
     @keyframes gradientShift {
@@ -270,80 +319,88 @@
     }
 
     .buttons button:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     }
 
     .buttons button:active {
-      transform: translateY(-2px) scale(0.98);
+      transform: translateY(-1px) scale(0.98);
     }
 
     .auto-status {
-      margin: 20px 0;
-      padding: 15px;
+      margin: 15px 0;
+      padding: 12px;
       background: linear-gradient(145deg, #333, #444);
-      border-radius: 15px;
+      border-radius: 12px;
       color: #FFD700;
-      font-size: 14px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      font-size: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(255, 215, 0, 0.3);
       transform: translateZ(15px);
       animation: statusPulse 2s ease-in-out infinite;
     }
 
     @keyframes statusPulse {
-      0%, 100% { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
-      50% { box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2); }
+      0%, 100% { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); }
+      50% { box-shadow: 0 6px 20px rgba(255, 215, 0, 0.2); }
     }
 
     #video-container {
       display: none;
-      margin-top: 20px;
+      margin-top: 15px;
       transform: translateZ(10px);
     }
 
     #video-container iframe {
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      aspect-ratio: 16/9;
     }
 
     #video-container p {
       color: #FFD700;
-      font-size: 14px;
-      margin-top: 10px;
+      font-size: 12px;
+      margin-top: 8px;
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
 
     .withdraw-section {
-      margin-top: 25px;
+      margin-top: 20px;
       display: none;
-      padding: 25px;
+      padding: 20px;
       background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
       border: 1px solid rgba(255, 215, 0, 0.2);
       transform: translateZ(15px);
     }
 
     .withdraw-section h3 {
       color: #FFD700;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+      font-size: 18px;
     }
 
     .withdraw-section input,
     .withdraw-section select,
     .withdraw-section button {
       width: 100%;
-      margin: 10px 0;
-      padding: 12px;
+      margin: 8px 0;
+      padding: 10px;
       border: 2px solid transparent;
-      border-radius: 10px;
+      border-radius: 8px;
       background: linear-gradient(145deg, #333, #444);
       color: white;
-      font-size: 14px;
+      font-size: 13px;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
     }
 
     .withdraw-section input:focus,
@@ -365,32 +422,15 @@
 
     .withdraw-section button:hover {
       background: linear-gradient(45deg, #45a049, #4CAF50);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
-    }
-
-    /* Responsive design */
-    @media (max-width: 480px) {
-      .container {
-        width: 90%;
-        padding: 20px;
-      }
-      
-      .container h1 {
-        font-size: 20px;
-      }
-      
-      .buttons button {
-        padding: 12px;
-        font-size: 13px;
-      }
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
     }
 
     /* Loading animation for elements */
     .container > * {
       animation: fadeInUp 0.8s ease-out forwards;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
     }
 
     .container > *:nth-child(1) { animation-delay: 0.1s; }
@@ -406,9 +446,126 @@
         transform: translateY(0);
       }
     }
+
+    /* Hide scrollbars */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    
+    * {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Prevent text selection */
+    * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Allow text selection for inputs */
+    input, textarea {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+
+    /* Override any Blogger styles */
+    body[data-blog-version],
+    body[class*="blogger"],
+    body[class*="blog"] {
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%) !important;
+      background-image: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%) !important;
+    }
+
+    /* Hide Blogger elements */
+    [class*="blogger"],
+    [id*="blogger"],
+    [class*="blog"],
+    [id*="blog"],
+    .blog-pager,
+    .blog-pager-older-link,
+    .blog-pager-newer-link,
+    .blog-pager-home-link,
+    .blog-pager-archive-link,
+    .blog-pager-older-link,
+    .blog-pager-newer-link,
+    .blog-pager-home-link,
+    .blog-pager-archive-link,
+    .blog-pager-older-link,
+    .blog-pager-newer-link,
+    .blog-pager-home-link,
+    .blog-pager-archive-link {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      width: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+      top: -9999px !important;
+    }
+
+    /* Force our container to be visible */
+    .container {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      z-index: 9999 !important;
+      position: relative !important;
+    }
+
+    /* Additional mobile optimization for Telegram */
+    @media screen and (max-width: 768px) {
+      body {
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100vw !important;
+        height: 100vh !important;
+      }
+      
+      .container {
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+        height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+      
+      /* Ensure no Blogger elements show on mobile */
+      [class*="blogger"],
+      [id*="blogger"],
+      [class*="blog"],
+      [id*="blog"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        z-index: -9999 !important;
+      }
+    }
+
+    /* Force Telegram Web App styling */
+    body[data-telegram-web-app] {
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%) !important;
+      background-image: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%) !important;
+    }
   </style>
 </head>
-<body>
+<body data-telegram-web-app="true">
   <div class="container">
     <h1>Auto MoneTag Ads</h1>
     <div class="developer">Developer by TBPYC</div>
@@ -451,17 +608,37 @@
   </div>
 
   <script>
-    (function(){
-      const adScript = document.createElement('script');
-      adScript.async = true;
-      adScript.src = 'https://' + ['js','onclckmn','com'].join('.') + '/static/onclicka.js';
-      adScript.setAttribute('data-admpid', '310679');
-      document.head.appendChild(adScript);
-    })();
-  </script>
+    // Initialize Telegram Web App
+    let tg = window.Telegram.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+      tg.enableClosingConfirmation();
+      
+      // Force mobile view
+      tg.setHeaderColor('#000000');
+      tg.setBackgroundColor('#000000');
+      tg.setThemeParams({
+        bg_color: '#000000',
+        text_color: '#ffffff',
+        hint_color: '#FFD700',
+        button_color: '#4CAF50',
+        button_text_color: '#ffffff'
+      });
+    }
 
-  <script>
-    const MIN_WITHDRAW_POINTS = 200;
+    // Force mobile optimization
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      
+      // Prevent any Blogger redirects on mobile
+      if (window.location.href.includes('blogspot.com') || window.location.href.includes('blogger.com')) {
+        window.location.href = window.location.href.replace(/^https?:\/\/([^.]+)\.(blogspot\.com|blogger\.com)/, 'https://$1.github.io');
+      }
+    }
+
+    const MIN_WITHDRAW_POINTS = 20;
     const ADMIN_USER_ID = "8393951171";
     const BOT_TOKEN = "8393951171:AAEmwepU4YLh_5GMzoL8oPGsyGRXyK4zXIU";
     const YOUTUBE_VIDEOS = [
@@ -477,11 +654,16 @@
     let autoAdTimer;
     let countdownInterval;
     let isAutoAdsRunning = false;
-    let adDuration = 30000; // 30 seconds for each ad
+    let adDuration = 5000; // 5 seconds for each ad
 
-    const telegramUserName = "@exampleUser";
+    // Get user info from Telegram
+    let telegramUserName = "@exampleUser";
+    if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+      telegramUserName = "@" + tg.initDataUnsafe.user.username || "User";
+    }
     document.getElementById("user-name").textContent = telegramUserName;
 
+    // Load saved data
     if (localStorage.getItem('watchedAdsCount')) {
       watchedAdsCount = parseInt(localStorage.getItem('watchedAdsCount'));
       earnedPoints = parseFloat(localStorage.getItem('earnedPoints'));
@@ -490,14 +672,27 @@
     }
 
     function watchAd() {
-      if (typeof show_9716370 === 'function') {
-        show_9716370().then(() => {
-          watchedAdsCount++;
-          earnedPoints += 0.50;
-          updateStats();
-          updateProgressCircle();
-        });
-      }
+      // Simple ad simulation for mobile
+      const adBtn = document.getElementById('watch-ad-btn');
+      adBtn.disabled = true;
+      adBtn.textContent = 'Watching...';
+      
+      setTimeout(() => {
+        watchedAdsCount++;
+        earnedPoints += 0.50;
+        updateStats();
+        updateProgressCircle();
+        
+        adBtn.disabled = false;
+        adBtn.textContent = 'Watch Ad';
+        
+        // Show success message
+        if (tg) {
+          tg.showAlert('Ad watched successfully! +0.50 points');
+        } else {
+          alert('Ad watched successfully! +0.50 points');
+        }
+      }, 3000);
     }
 
     function watchVideo() {
@@ -511,11 +706,15 @@
       const videoCheckInterval = setInterval(() => {
         if (currentVideo && !currentVideo.watched) {
           const timeWatched = (Date.now() - currentVideo.startTime) / 1000;
-          if (timeWatched >= 120) {
+          if (timeWatched >= 60) { // Reduced to 60 seconds for mobile
             currentVideo.watched = true;
             earnedPoints += 1.00;
             updateStats();
-            alert('You earned 1 point for watching the full video!');
+            if (tg) {
+              tg.showAlert('You earned 1 point for watching the video!');
+            } else {
+              alert('You earned 1 point for watching the video!');
+            }
             clearInterval(videoCheckInterval);
           }
         } else {
@@ -536,32 +735,28 @@
       showAutoAd();
       
       // Set interval for subsequent ads
-      autoAdInterval = setInterval(showAutoAd, adDuration + 5000); // 5 seconds gap between ads
+      autoAdInterval = setInterval(showAutoAd, adDuration + 2000); // 2 seconds gap between ads
     }
 
     function showAutoAd() {
       if (!isAutoAdsRunning) return;
       
-      // Show ad
-      if (typeof show_9716370 === 'function') {
-        show_9716370().then(() => {
-          // Ad started successfully
-          startCountdown();
-          
-          // Auto close ad after specified duration
-          setTimeout(() => {
-            closeAutoAd();
-          }, adDuration);
-        }).catch(() => {
-          // If ad fails, try again after 10 seconds
-          setTimeout(showAutoAd, 10000);
-        });
-      }
+      // Simulate ad for mobile
+      const adBtn = document.getElementById('auto-ad-btn');
+      adBtn.textContent = 'Ad Running...';
+      adBtn.disabled = true;
+      
+      startCountdown();
+      
+      // Auto close ad after specified duration
+      setTimeout(() => {
+        closeAutoAd();
+        adBtn.textContent = 'Auto Show Ads';
+        adBtn.disabled = false;
+      }, adDuration);
     }
 
     function closeAutoAd() {
-      // Simulate closing the ad (this will depend on the ad provider's API)
-      // For now, we'll just update stats and prepare for next ad
       watchedAdsCount++;
       earnedPoints += 0.50;
       updateStats();
@@ -625,6 +820,10 @@
       document.getElementById('withdraw-status').textContent = '✅ Withdrawal request sent successfully!';
       document.getElementById('withdraw-amount').value = '';
       document.getElementById('withdraw-phone').value = '';
+      
+      if (tg) {
+        tg.showAlert('Withdrawal request sent successfully!');
+      }
     }
 
     function updateStats() {
@@ -654,6 +853,92 @@
       .then(data => console.log("Message sent to Telegram", data))
       .catch(err => console.error("Telegram Error:", err));
     }
+
+    // Prevent context menu on mobile
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    
+    // Prevent zoom on double tap
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+
+    // Force proper page loading and prevent Blogger
+    document.addEventListener('DOMContentLoaded', function() {
+      // Remove any Blogger elements that might have been added
+      const bloggerElements = document.querySelectorAll('[class*="blogger"], [id*="blogger"], [class*="blog"], [id*="blog"]');
+      bloggerElements.forEach(el => el.remove());
+      
+      // Ensure our content is visible
+      const container = document.querySelector('.container');
+      if (container) {
+        container.style.display = 'block';
+        container.style.visibility = 'visible';
+        container.style.opacity = '1';
+      }
+      
+      // Force body background
+      document.body.style.background = 'linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%)';
+      document.body.style.backgroundImage = 'linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%)';
+    });
+
+    // Additional protection against Blogger
+    window.addEventListener('load', function() {
+      // Final cleanup
+      if (typeof window.Blogger !== 'undefined') {
+        delete window.Blogger;
+      }
+      
+      // Ensure our styles are applied
+      document.body.className = '';
+      document.body.removeAttribute('data-blog-version');
+      document.body.removeAttribute('data-blog-id');
+    });
+
+    // Continuous protection against Blogger interface
+    setInterval(function() {
+      // Remove any Blogger elements that might appear
+      const bloggerElements = document.querySelectorAll('[class*="blogger"], [id*="blogger"], [class*="blog"], [id*="blog"]');
+      bloggerElements.forEach(el => {
+        el.remove();
+        console.log('Removed Blogger element:', el);
+      });
+      
+      // Ensure our container is always visible
+      const container = document.querySelector('.container');
+      if (container) {
+        container.style.display = 'flex';
+        container.style.visibility = 'visible';
+        container.style.opacity = '1';
+        container.style.zIndex = '9999';
+      }
+      
+      // Force body styling
+      document.body.style.background = 'linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%)';
+      document.body.style.backgroundImage = 'linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%)';
+      document.body.style.overflow = 'hidden';
+    }, 1000);
+
+    // Block any Blogger scripts from loading
+    const originalCreateElement = document.createElement;
+    document.createElement = function(tagName) {
+      const element = originalCreateElement.call(document, tagName);
+      if (tagName.toLowerCase() === 'script') {
+        const originalSetAttribute = element.setAttribute;
+        element.setAttribute = function(name, value) {
+          if (name === 'src' && (value.includes('blogger') || value.includes('blogspot'))) {
+            console.log('Blocked Blogger script:', value);
+            return;
+          }
+          return originalSetAttribute.call(this, name, value);
+        };
+      }
+      return element;
+    };
   </script>
 </body>
 </html>
